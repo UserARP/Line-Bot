@@ -1,1 +1,1 @@
-<?php echo "I am a botssssss bitch";
+<?php echo "I am a bots bitch";
