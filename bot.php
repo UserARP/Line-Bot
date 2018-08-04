@@ -44,7 +44,7 @@ if (!is_null($events['events'])) {
 				'stickerId' => '106'
 			];
 			// Build message to reply back
-			if ($event['message']['text'] == "สวัสดี"){
+			if ($event['message']['text'] == "สัส"){
 				$bufferMessages[0] = $messages03;
 			}
 			if ($event['message']['text'] == "สวัสดี"){
