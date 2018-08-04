@@ -51,7 +51,7 @@ if (!is_null($events['events'])) {
 			
           if($event['message']['text'] == "ปิดไฟ"){
 				if ($mqtt->connect(true,NULL,$username,$password)) {
-					$mqtt->publish("topic","off"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+					$mqtt->publish("/rfid","off"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
 					$mqtt->close();
 					echo 'Okayturnofflight';
 				}
@@ -65,7 +65,7 @@ if (!is_null($events['events'])) {
             
             if ($event['message']['text'] == "เปิดไฟ"){
 				if ($mqtt->connect(true,NULL,$username,$password)) {
-					$mqtt->publish("topic","On"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+					$mqtt->publish("/rfid","On"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
 					$mqtt->close();
 					echo 'OkayturnOnlight';
 				}
@@ -73,15 +73,6 @@ if (!is_null($events['events'])) {
 			}
 			 
             
-            
-            if($event['message']['text'] == "เริ่มใหม่"){
-				if ($mqtt->connect(true,NULL,$username,$password)){
-					$mqtt->publish("topic","คำสั้ง"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
-					$mqtt->close();
-					echo 'connected';
-				}
-				$bufferMessages[0] = $stickerMessage;
-			}
 			
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
