@@ -28,9 +28,12 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			$messages01 = [
 				'type' => 'text',
-				'text' => 'มีอะไรให้รับใช้ครับ อิอิ'
+				'text' => 'มีอะไรให้รับใช้ครับ'
 			];
-			
+			$messages03 = [
+				'type' => 'text',
+				'text' => 'ควย'
+			];
 			$messages02 = [
 				'type' => 'text',
 				'text' => 'โอเครจ้า'
@@ -41,6 +44,9 @@ if (!is_null($events['events'])) {
 				'stickerId' => '106'
 			];
 			// Build message to reply back
+			if ($event['message']['text'] == "สวัสดี"){
+				$bufferMessages[0] = $messages03;
+			}
 			if ($event['message']['text'] == "สวัสดี"){
 				$bufferMessages[0] = $messages01;
 			}
