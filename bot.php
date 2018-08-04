@@ -70,6 +70,15 @@ if (!is_null($events['events'])) {
 					echo 'OkayturnOnlight';
 				}
 				$bufferMessages[0] = $messages02;
+                  
+            if ($event['message']['text'] == "ตรวจไฟ"){
+				if ($mqtt->connect(true,NULL,$username,$password)) {
+					$mqtt->publish("/rfid","status"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+					$mqtt->close();
+					echo 'Okay';
+				}
+				$bufferMessages[0] = $messages02;
+			}
 			}
 			 
             
