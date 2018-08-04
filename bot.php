@@ -21,7 +21,7 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			
-			$bufferMessages = [3];
+			$bufferMessages = [4];
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
@@ -30,37 +30,53 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => 'มีอะไรให้รับใช้ครับ'
 			];
-			$messages03 = [
-				'type' => 'text',
-				'text' => 'ควย'
-			];
 			$messages02 = [
 				'type' => 'text',
-				'text' => 'โอเครจ้า'
+				'text' => 'เครจ้า'
 			];
 			$stickerMessage = [ 
 				'type' => 'sticker',
 				'packageId' => '1',
 				'stickerId' => '106'
 			];
-			// Build message to reply back
-			if ($event['message']['text'] == "สัส"){
+			  
+            $messages03 = [
+				'type' => 'text',
+				'text' => 'ปิดไฟแล้วแล้วนะ'
+			];
+            
+            
+            
+            // Build message to reply back  
+			
+          if($event['message']['text'] == "ปิดไฟ"){
+				if ($mqtt->connect(true,NULL,$username,$password)) {
+					$mqtt->publish("topic","off"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+					$mqtt->close();
+					echo 'Okayturnofflight';
+				}
 				$bufferMessages[0] = $messages03;
 			}
-			if ($event['message']['text'] == "สวัสดี"){
+			
+            if ($event['message']['text'] == "สวัสดี"){
 				$bufferMessages[0] = $messages01;
 			}
-			if ($event['message']['text'] == "รับทราบ/PointA"){
+			
+            
+            if ($event['message']['text'] == "เปิดไฟ"){
 				if ($mqtt->connect(true,NULL,$username,$password)) {
-					$mqtt->publish("/IoT/Parking/PointA/Response/S1","Okay"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+					$mqtt->publish("topic","On"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
 					$mqtt->close();
-					echo 'Okay';
+					echo 'OkayturnOnlight';
 				}
 				$bufferMessages[0] = $messages02;
 			}
-			if($event['message']['text'] == "เริ่มใหม่"){
+			 
+            
+            
+            if($event['message']['text'] == "เริ่มใหม่"){
 				if ($mqtt->connect(true,NULL,$username,$password)){
-					$mqtt->publish("/IoT/Parking/PointA/Response/S2","Reset"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
+					$mqtt->publish("topic","คำสั้ง"); // ตัวอย่างคำสั่งเปิดทีวีที่จะส่งไปยัง mqtt server
 					$mqtt->close();
 					echo 'connected';
 				}
