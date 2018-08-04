@@ -7,7 +7,7 @@ $password = "ty5p0DBl15bp";
 $messageMQTT = "";
 //MQTT client id to use for the device. "" will generate a client id automatically
 $mqtt = new phpMQTT($host, $port, "ClientID".rand()); 
-$access_token = 'Z9Wav06XxIc5/hJHSvQtXkaK3igwnhuFp52IueEWDRHa5oQlSUNTsyjklUwQc6l18Xpb1pPklOvsqvNNd2CANtgLLNiys/ugA3wo9z/fm1xmvMUtFLMoQfmGr8M4b5dSruBFPb5l/+CkrZN7nudBiQdB04t89/1O/w1cDnyilFU=';
+$access_token = 'Kg+BrORXmqZel24gvGKyij8kpdtywALpj8/Qooi9IvlQqEQ46oV03oZ8cHJQ9lSqy2KlvhA4T6q21H9KrcVeAj5YMJOK/8M46MWZ3Dm00E8uSEgZ1vomumFToCtQALP/z1Cd5BbKAHHAqOEKYPbMzgdB04t89/1O/w1cDnyilFU=';
 //$proxy = <YOUR_PROXY_FROM_FIXIE>;
 //$proxyauth = <YOUR_PROXYAUTH_FROM_FIXIE>;
 // Get POST body content
